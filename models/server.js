@@ -1,6 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
+const { dbConnection } = require("../database/database");
 const { PORT, NODE_ENV } = require("../config/config");
 
 module.exports = class Server {
@@ -11,8 +12,13 @@ module.exports = class Server {
     this.paths = {
       admin: "/api/admin",
     };
+    this.Database();
     this.Middlewares();
     this.Routes();
+  }
+
+  async Database() {
+    await dbConnection();
   }
 
   Middlewares() {
