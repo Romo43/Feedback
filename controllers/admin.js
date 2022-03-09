@@ -1,0 +1,20 @@
+const Admin = require("../models/admin");
+
+const login = async (req, res) => {
+  const { email, password } = req.body;
+  const admin = await Admin.findOne({ email });
+  if (!admin) {
+    return res.status(401).send({ error: "User not found" });
+  }
+  const isPasswordValid = await Admin.comparePassword(password, admin.password);
+  if (!isPasswordValid) {
+    return res.status(401).send({ error: "Invalid password" });
+  }
+  return res.send({ admin });
+};
+
+const home = (req, res) => {
+  res.send("Admin page");
+};
+
+module.exports = { login, home };
