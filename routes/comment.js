@@ -1,10 +1,11 @@
 const { Router } = require("express");
 const { check } = require("express-validator");
-const { validateFields } = require("../middlewares");
+const { validateFields, validateJWT } = require("../middlewares");
+const { getComments, createComment, updateStatus } = require("../controllers/comment");
 
 const router = Router();
 
-const { createComment } = require("../controllers/comment");
+router.get("/comments", [validateJWT], getComments);
 
 router.post(
   "/create",
@@ -25,5 +26,7 @@ router.post(
   ],
   createComment
 );
+
+router.put("/status/:id", [validateJWT], updateStatus);
 
 module.exports = router;

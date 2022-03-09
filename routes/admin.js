@@ -13,8 +13,5 @@ router.post(
   ],
   login
 );
-router.get("/home", (req, res) => {
-  res.send("Admin page");
-});
 
 module.exports = router;

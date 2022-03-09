@@ -17,8 +17,4 @@ const login = async (req, res) => {
   });
 };
 
-const home = (req, res) => {
-  res.send("Admin page");
-};
-
-module.exports = { login, home };
+module.exports = { login };
