@@ -3,7 +3,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 const { dbConnection } = require("../database/database");
 const { PORT, NODE_ENV } = require("../config/config");
-const { adminRouter } = require("../routes");
+const { adminRouter, commentRouter } = require("../routes");
 
 module.exports = class Server {
   constructor() {
@@ -12,6 +12,7 @@ module.exports = class Server {
     this.env = NODE_ENV;
     this.paths = {
       admin: "/api/admin",
+      comment: "/api/comment",
     };
     this.Database();
     this.Middlewares();
@@ -32,6 +33,7 @@ module.exports = class Server {
 
   Routes() {
     this.app.use(`${this.paths.admin}`, adminRouter);
+    this.app.use(`${this.paths.comment}`, commentRouter);
   }
 
   Listen() {
