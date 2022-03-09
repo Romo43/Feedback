@@ -3,6 +3,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 const { dbConnection } = require("../database/database");
 const { PORT, NODE_ENV } = require("../config/config");
+const { adminRouter } = require("../routes");
 
 module.exports = class Server {
   constructor() {
@@ -30,9 +31,7 @@ module.exports = class Server {
   }
 
   Routes() {
-    this.app.use(`${this.paths.admin}`, (req, res) => {
-      res.send("Hello from admin");
-    });
+    this.app.use(`${this.paths.admin}`, adminRouter);
   }
 
   Listen() {
