@@ -17,7 +17,7 @@ const [MONGO_LOCAL_HOST, MONGO_CLOUD_HOST] = [
   `mongodb+srv://${MONGO_USER}:${MONGO_PW}@cluster0.meoke.mongodb.net/${MONGO_HOST}?retryWrites=true`,
 ];
 
-const dbURI = NODE_ENV === "production" ? MONGO_CLOUD_HOST : MONGO_LOCAL_HOST;
+const dbURI = NODE_ENV === "development" ? MONGO_LOCAL_HOST : MONGO_CLOUD_HOST;
 
 const dbConnection = async () => {
   await mongoose
