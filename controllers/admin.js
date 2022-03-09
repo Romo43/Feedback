@@ -1,4 +1,5 @@
 const Admin = require("../models/admin");
+const { generateJWT } = require("../helpers");
 
 const login = async (req, res) => {
   const { email, password } = req.body;
@@ -10,7 +11,10 @@ const login = async (req, res) => {
   if (!isPasswordValid) {
     return res.status(401).send({ error: "Invalid password" });
   }
-  return res.send({ admin });
+  const token = await generateJWT(admin.uid);
+  return res.json({
+    token
+  });
 };
 
 const home = (req, res) => {
