@@ -2,7 +2,7 @@ require("dotenv").config();
 
 const {
   PORT,
-  NODE_ENV,
+  NODE_ENV = "production",
   MONGO_CLUSTER,
   MONGO_HOST,
   MONGO_PW,
