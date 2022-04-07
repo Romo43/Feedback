@@ -29,7 +29,7 @@ module.exports = class Server {
   }
 
   Routes() {
-    this.app.use(`${this.paths.feed}`, feedRouter);
+    this.app.use(this.paths.feed, feedRouter);
   }
 
   Listen() {
