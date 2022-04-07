@@ -5,10 +5,8 @@ const getAllFeeds = async (req, res) => {
     Feed.countDocuments(),
     Feed.find(),
   ]);
-
   const totalScore = feeds.map((feed) => feed.score).reduce((a, b) => a + b);
   const averageScore = Math.round(totalScore / total);
-
   res.json({
     averageScore,
     total,
@@ -26,7 +24,6 @@ const createFeed = async (req, res) => {
   await newFeed.save();
   res.status(201).json({
     message: "Feed created successfully",
-    data: newFeed,
   });
 };
 
