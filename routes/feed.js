@@ -5,7 +5,7 @@ const { getAllFeeds, createFeed } = require("../controllers/feed");
 
 const router = Router();
 
-router.get("/all", getAllFeeds);
+router.get("/feeds", getAllFeeds);
 
 router.post(
   "/create",
