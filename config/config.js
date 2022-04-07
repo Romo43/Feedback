@@ -5,7 +5,7 @@ const {
   NODE_ENV = "production",
   MONGO_CLUSTER,
   MONGO_HOST,
-  MONGO_PW,
+  MONGO_PASSWORD,
   MONGO_USER,
 } = process.env;
 
@@ -15,7 +15,7 @@ module.exports = {
   MONGO: {
     CLUSTER: MONGO_CLUSTER,
     HOST: MONGO_HOST,
-    PASSWORD: MONGO_PW,
+    PASSWORD: MONGO_PASSWORD,
     USER: MONGO_USER,
   },
 };
