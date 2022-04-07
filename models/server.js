@@ -34,7 +34,7 @@ module.exports = class Server {
 
   Listen() {
     this.app.listen(this.port, () => {
-      console.log(`Server running from ${this.env} on port ${this.port}`);
+      console.log(`Server running on port ${this.port}`);
     });
   }
 };
