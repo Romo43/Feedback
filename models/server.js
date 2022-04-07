@@ -2,17 +2,15 @@ const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
 const { dbConnection } = require("../database/database");
-const { PORT, NODE_ENV } = require("../config/config");
-const { adminRouter, commentRouter } = require("../routes");
+const { PORT } = require("../config/config");
+const { feedRouter } = require("../routes");
 
 module.exports = class Server {
   constructor() {
     this.app = express();
     this.port = PORT;
-    this.env = NODE_ENV;
     this.paths = {
-      admin: "/api/admin",
-      comment: "/api/comment",
+      feed: "/api/feed",
     };
     this.Database();
     this.Middlewares();
@@ -26,14 +24,12 @@ module.exports = class Server {
   Middlewares() {
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: false }));
-    this.app.use(express.static("public"));
     this.app.use(cors());
     this.app.use(morgan("dev"));
   }
 
   Routes() {
-    this.app.use(`${this.paths.admin}`, adminRouter);
-    this.app.use(`${this.paths.comment}`, commentRouter);
+    this.app.use(`${this.paths.feed}`, feedRouter);
   }
 
   Listen() {

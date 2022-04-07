@@ -1,7 +1,3 @@
-const validateFields = require("../middlewares/validateFields");
-const validateJWT = require("../middlewares/validateJWT");
+const validateFields = require("./validateFields");
 
-module.exports = {
-  ...validateFields,
-  ...validateJWT,
-};
+module.exports = { ...validateFields };

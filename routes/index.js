@@ -1,7 +1,3 @@
-const adminRouter = require("../routes/admin");
-const commentRouter = require("../routes/comment");
+const feedRouter = require("./feed");
 
-module.exports = {
-  adminRouter,
-  commentRouter,
-};
+module.exports = { feedRouter };
