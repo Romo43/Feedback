@@ -1,17 +1,21 @@
-const { Schema, model } = require("mongoose");
+import mongoose from "mongoose";
+const { Schema, model } = mongoose;
 
 const feedSchema = new Schema({
   title: {
     type: String,
     required: true,
+    trim: true,
   },
-  feed: {
+  description: {
     type: String,
     required: true,
+    trim: true,
   },
   score: {
     type: Number,
-    require: true,
+    required: true,
+    trim: true,
     enum: [1, 2, 3, 4, 5],
   },
   createdAt: {
@@ -26,4 +30,4 @@ feedSchema.methods.toJSON = function () {
   return feed;
 };
 
-module.exports = model("Feed", feedSchema);
+export default model("Feed", feedSchema);
