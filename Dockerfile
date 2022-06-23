@@ -8,6 +8,8 @@ RUN npm install
 
 COPY . .
 
+ENV NODE_ENV = ${NODE_ENV}
+
 EXPOSE 8080
 
 CMD [ "npm", "run", "start" ]

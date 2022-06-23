@@ -17,7 +17,6 @@ services:
     ports:
       - "27017:27017"
     environment:
-      - NODE_ENV = ${NODE_ENV}
       - MONGO_PORT = ${MONGO_PORT}
       - MONGO_NAME = ${MONGO_NAME}
       - MONGO_PASSWORD = ${MONGO_PASSWORD}
