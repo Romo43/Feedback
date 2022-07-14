@@ -1,5 +1,6 @@
 import Feed from "../models/feed.js";
 
+// Get all feeds
 export const getAllFeeds = async (req, res) => {
   const [total, feeds] = await Promise.all([
     Feed.countDocuments(),
@@ -9,7 +10,6 @@ export const getAllFeeds = async (req, res) => {
   feeds.forEach((feed) => {
     totalScore += feed.score;
   });
-  //const totalScore = feeds.map((feed) => feed.score).reduce((a, b) => a + b);
   let averageScore = Math.round(totalScore / total);
   if (!averageScore) {
     averageScore = 0;
@@ -21,6 +21,7 @@ export const getAllFeeds = async (req, res) => {
   });
 };
 
+// Create a feed
 export const createFeed = async (req, res) => {
   const { title, description, score } = req.body;
   const newFeed = new Feed({

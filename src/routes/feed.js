@@ -1,12 +1,15 @@
 import { Router } from "express";
 import { check } from "express-validator";
 import { validateFields } from "../middlewares/validateFields.js";
-import { getAllFeeds, createFeed } from "../controllers/feed.js";
+import * as feedController from "../controllers/feed.js";
 
+// Create a router
 const router = Router();
 
-router.get("/feeds", getAllFeeds);
+// Get all feeds
+router.get("/feeds", feedController.getAllFeeds);
 
+// Create a feed
 router.post(
   "/create",
   [
@@ -32,7 +35,8 @@ router.post(
     }),
     validateFields,
   ],
-  createFeed
+  feedController.createFeed
 );
 
+// Export the router
 export default router;
